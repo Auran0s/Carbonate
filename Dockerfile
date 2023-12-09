@@ -15,6 +15,6 @@ RUN pip install -r requirements.txt
 COPY ./ ./
 RUN npx tailwindcss -i ./static/src/main.css -o ./static/dist/main.css
 
-RUN prisma db push
+RUN prisma migrate deploy
 
 CMD ["waitress-serve", "--port=5067", "app:app"]

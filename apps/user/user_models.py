@@ -21,7 +21,7 @@ async def user_create(email, name, surname):
     """
     avatar = avatar_gen(email)
     async with Prisma() as db:
-        user = await db.user.create(data={'email': email, 'name':name, 'surname':surname, 'avatar':avatar})
+        user = await db.user.create(data={'email': email, 'name':name, 'surname':surname, 'avatar':avatar}) #type: ignore
     return user
 
 def avatar_gen(email):

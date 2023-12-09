@@ -17,8 +17,7 @@ model User {
   active Boolean @default(false)
 
   email   String @unique
-  name    String
-  surname String
+  username  String @unique
 
   avatar String
 
@@ -32,7 +31,7 @@ model User {
 
   restrictions Restrictions[]
 
-  collections Collections[]
+  collections Collections[] @relation("UserCollections")
 }
 
 enum Plan {
@@ -72,6 +71,22 @@ model Collections {
 
   name String
 
-  user  User @relation(fields: [user_id], references: [id])
-  user_id String
+  users User[] @relation("UserCollections")
+
+  medias   Medias[]   @relation("CollectionsMedias")
+}
+
+model Medias {
+  id String @id @default(uuid())
+
+  name String
+
+  mediaType String
+  mediaFormat String
+
+  url String
+
+  metadata String[]
+
+  collections Collections[] @relation("CollectionsMedias")
 }

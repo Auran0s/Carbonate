@@ -36,15 +36,6 @@ app.register_blueprint(user_api)
 from apps.restrictions.restrictions_renders import *
 app.register_blueprint(restrictions_renders)
 
-from apps.credentials.credentials_renders import *
-from apps.credentials.credentials_api import *
-app.register_blueprint(credentials_renders)
-app.register_blueprint(credentials_api)
-
-from apps.instance.instance_api import *
-from apps.instance.instance_renders import *
-app.register_blueprint(instance_api)
-app.register_blueprint(instance_renders)
 
 # SECRET KEYS #
 app.secret_key = config('SECRET_KEY')

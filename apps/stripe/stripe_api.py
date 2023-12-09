@@ -9,7 +9,6 @@ from apps.stripe.stripe_models import *
 from apps.user.user_models import *
 from apps.auth.auth_api import *
 from apps.restrictions.restrictions_models import *
-from apps.instance.instance_models import *
 
 stripe.api_key = config('STRIPE_API_KEY')
 endpoint_secret = config('STRIPE_ENDPOINT_SECRET')
