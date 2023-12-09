@@ -8,6 +8,15 @@ class MediaType:
 class MediaFormat:
     Portrait = 'Portrait'
     Paysage = 'Landscape'
+    
+metadata_example = [
+    {
+        'prompt': '',
+        'model': '',
+        'description': '',
+        'size': '',
+    }
+]
 
 async def medias_create(name, media_type, media_format, url, metadata, collections):
     async with Prisma() as db:

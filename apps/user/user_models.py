@@ -7,6 +7,7 @@ class Models:
     Customer = "customer"
     Restrictions = "restrictions"
     Instances = "instances"
+    Collections = "Collections"
 
 async def user_create(email, name, surname):
     """User create

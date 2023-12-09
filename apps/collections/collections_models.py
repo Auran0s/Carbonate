@@ -20,6 +20,16 @@ async def collections_get(collections):
         collections = await db.collections.find_unique(where={'id':collections.id})
     return collections
 
+async def collections_get_medias(collections):
+    async with Prisma() as db:
+        collections = await db.collections.find_unique(where={'id':collections.id}, include={'medias': True})
+    return collections
+
+async def collections_get_users(collections):
+    async with Prisma() as db:
+        collections = await db.collections.find_unique(where={'id':collections.id}, include={'users': True})
+    return collections
+
 async def collections_update_name(collections, name):
     async with Prisma() as db:
         collections = await db.collections.update(where={'id':collections.id}, data={'name':name})
