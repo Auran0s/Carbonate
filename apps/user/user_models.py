@@ -61,7 +61,7 @@ async def user_optinNL(user, optinNL):
         User: User object
     """
     async with Prisma() as db:
-        user = await db.user.update(where={'email':user.email}, data={'optinNL':optinNL, 'optinAt':datetime.now()})
+        user = await db.user.update(where={'email':user.email}, data={'optinNL':optinNL, 'optinAt':datetime.now()}) #type: ignore
     return user
 
 async def user_change_active_plan(customer, active_plan):
@@ -126,11 +126,11 @@ async def user_delete(user):
         User: User object
     """
     async with Prisma() as db:
-        user = await db.user.delete(where={'user_id': user.user_id})
+        user = await db.user.delete(where={'user_id': user.user_id}) #type: ignore
     return user
 
 async def user_get_all_data(user, include=None):
     include = include or []
     async with Prisma() as db:
-        user = await db.user.find_unique(where={'id':user.id}, include={key: True for key in include})
+        user = await db.user.find_unique(where={'id':user.id}, include={key: True for key in include}) # type: ignore
     return user

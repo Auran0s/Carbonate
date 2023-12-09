@@ -32,7 +32,7 @@ model User {
 
   restrictions Restrictions[]
 
-  instances Instances?
+  collections Collections[]
 }
 
 enum Plan {
@@ -67,28 +67,11 @@ model Restrictions {
   uses_number Int
 }
 
-model CredentialsOAuth2 {
+model Collections {
   id String @id @default(uuid())
 
-  name          String
-  token_type    String
-  access_token  String
-  refresh_token String
-  expires_at    Int
+  name String
 
-  createdAt DateTime @default(now())
-
-  instance       Instances @relation(fields: [instanceId], references: [id])
-  instanceId     String
-}
-
-model Instances {
-  id String @id @default(uuid())
-
-  apiKey String @unique @default(uuid())
-
-  user    User   @relation(fields: [user_id], references: [id])
-  user_id String @unique
-
-  credentials    CredentialsOAuth2[]
+  user  User @relation(fields: [user_id], references: [id])
+  user_id String
 }
