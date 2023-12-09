@@ -1,0 +1,15 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+
+    {# Import static CSS file #}
+    <link rel="stylesheet" href="{{url_for('static', filename='dist/main.css')}}">
+    {# Import AlpineJS file #}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {# Import Preline JS #}
+    <script src="{{url_for('static', filename='dist/preline.js')}}"></script>
+    {# Import Htmx #}
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+</head>

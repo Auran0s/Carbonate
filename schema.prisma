@@ -1,0 +1,94 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
+}
+
+generator client {
+  provider             = "prisma-client-py"
+  interface            = "asyncio"
+  recursive_type_depth = 5
+}
+
+model User {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  active Boolean @default(false)
+
+  email   String @unique
+  name    String
+  surname String
+
+  avatar String
+
+  plan Plan?
+  active_plan Boolean @default(false)
+
+  optinNl Boolean   @default(false)
+  optinAt DateTime?
+
+  customer Customer?
+
+  restrictions Restrictions[]
+
+  instances Instances?
+}
+
+enum Plan {
+  SOLO
+  BUSINESS
+  CUSTOM
+}
+
+model Customer {
+  id String @id @default(uuid())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String @unique
+
+  client_reference_id String @unique @default(uuid())
+
+  end_date String?
+  interval String?
+
+  stripe_customer_id     String?
+  stripe_subscription_id String?
+}
+
+model Restrictions {
+  id String @id @default(uuid())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  function String
+
+  uses_number Int
+}
+
+model CredentialsOAuth2 {
+  id String @id @default(uuid())
+
+  name          String
+  token_type    String
+  access_token  String
+  refresh_token String
+  expires_at    Int
+
+  createdAt DateTime @default(now())
+
+  instance       Instances @relation(fields: [instanceId], references: [id])
+  instanceId     String
+}
+
+model Instances {
+  id String @id @default(uuid())
+
+  apiKey String @unique @default(uuid())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String @unique
+
+  credentials    CredentialsOAuth2[]
+}

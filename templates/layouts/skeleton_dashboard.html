@@ -1,0 +1,22 @@
+{% include 'components/header.html' %}
+
+<div class="w-full min-h-full bg-[#F5F5F5]">
+    {% include 'components/navbar.html' %}
+    <div class="grid grid-cols-12 gap-4 p-8 bg-black-100">
+        <div class="col-start-1 col-span-5 p-4">
+            <div class="flex flex-col gap-4 pl-8">
+                {% block title %}{% endblock %}
+            </div>
+        </div>
+        <div class="col-start-10 col-span-3">
+            {% include 'components/account_details.html' %}
+        </div>
+    </div>
+
+
+    <div class="grid grid-cols-12 gap-4 p-8">
+        <div class="col-start-1 col-span-9 space-y-8 p-4 h-full">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>

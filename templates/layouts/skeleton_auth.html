@@ -1,0 +1,27 @@
+{% include 'components/header.html' %}
+
+<div class="w-full">
+    <div class="flex h-screen mx-auto p-6">
+        <div class="w-full h-full flex items-center justify-center lg:w-2/3">
+            <div class="flex flex-col items-center justify-center h-full gap-6 w-1/3">
+                <div>
+                    <h1 class="font-inter text-3xl font-bold text-black-100 uppercase">Flow<span class="text-blue">wise</span></h1>
+                </div>
+                <div>
+                    <p class="font-inter text-xl text-black-75">{% block title %}{% endblock %}</p>
+                </div>
+                <div class="w-full pt-4">
+                    {% block form %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="hidden bg-blue lg:flex flex-grow rounded-md">
+            <div class="absolute">
+                <img src="{{url_for('static', filename='img/shape.png')}}">
+            </div>
+            <div class="p-6 w-2/3 flex items-end">
+                <h3 class="font-inter text-3xl font-semibold text-white">sdgsd dsfg sdf dfgsd gdsf gsd g dfhfd edhf eyfds sdg </h3>
+            </div>
+        </div>
+    </div>
+</div>

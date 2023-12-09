@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  Carbonate:
+    container_name: Carbonate-web
+    build:
+      context: .
+    ports:
+      - 5067:5067

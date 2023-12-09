@@ -1,0 +1,40 @@
+PRODUCTS_INFOS:
+- NAME: Plan Premium
+  SUBTITLE: Test
+  RECOMMENDED: False
+  PRICE: 19
+  PRICE_cent: |
+    .99
+  DESC_1:
+  - SEO Checker
+  - AI Content generation
+  - Support
+  DESC_2:
+  - SEO Checker
+  - AI Content generation
+  - Support
+  PRICE_ID: price_1M3NsbDOMozIYynbSDOPUMLy
+  ROLE: Plan.SOLO
+  WEIGHT: 0
+
+- NAME: Plan SupraPremium
+  SUBTITLE: ''
+  RECOMMENDED: True
+  PRICE: 29
+  PRICE_cent: |
+    .99
+  DESC_1:
+  - SEO Checker
+  - AI Content generation
+  - Support
+  DESC_2:
+  - SEO Checker
+  - AI Content generation
+  - Support
+  PRICE_ID: price_1M3NsbDOMozIYynbSDOPUMLy
+  ROLE: Plan.SOLO
+  WEIGHT: 0
+
+PRODUCTS_ID:
+  prod_MmxoZjpb3urkud: Plan.SOLO
+  prod_NFOVHMoHtfziOu: Plan.SOLO

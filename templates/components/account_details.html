@@ -1,0 +1,82 @@
+<div class="relative">
+    <div class="absolute w-full">
+        <div class="flex flex-col gap-8">
+            <div class="flex flex-col p-4 bg-white rounded-lg shadow-md">
+                <div class="flex flex-col gap-4 p-4">
+                    <div class="flex flex-col gap-8 pb-8 border-b border-black-25">
+                        <div class="flex justify-between w-full">
+                            <h2 class="font-inter font-semibold text-lg text-black-100 capitalize">Your billing</h2>
+                            {% if user.active_plan == True %}
+                            <span class="inline-flex justify-center items-center gap-1.5 py-1.5 px-3 rounded-full font-inter text-xs font-semibold bg-green-light text-green-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                    <path d="M4.25001 7.73294C3.21592 7.73294 2.32956 7.3693 1.59092 6.64203C0.852287 5.91476 0.488651 5.02839 0.500014 3.98294C0.488651 2.96021 0.852287 2.08521 1.59092 1.35794C2.32956 0.630665 3.21592 0.267029 4.25001 0.267029C5.25001 0.267029 6.11933 0.630665 6.85797 1.35794C7.60797 2.08521 7.98865 2.96021 8.00001 3.98294C7.98865 4.67612 7.80683 5.3068 7.45456 5.87498C7.11365 6.44317 6.65911 6.89771 6.09092 7.23862C5.53411 7.56817 4.92047 7.73294 4.25001 7.73294Z" fill="#047857"/>
+                                </svg>
+                                Active
+                            </span>
+                            {% else %}
+                            <span class="inline-flex justify-center items-center gap-1.5 py-1.5 px-3 rounded-full font-inter text-xs font-semibold bg-red-light text-red-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                    <path d="M4.25001 7.73294C3.21592 7.73294 2.32956 7.3693 1.59092 6.64203C0.852287 5.91476 0.488651 5.02839 0.500014 3.98294C0.488651 2.96021 0.852287 2.08521 1.59092 1.35794C2.32956 0.630665 3.21592 0.267029 4.25001 0.267029C5.25001 0.267029 6.11933 0.630665 6.85797 1.35794C7.60797 2.08521 7.98865 2.96021 8.00001 3.98294C7.98865 4.67612 7.80683 5.3068 7.45456 5.87498C7.11365 6.44317 6.65911 6.89771 6.09092 7.23862C5.53411 7.56817 4.92047 7.73294 4.25001 7.73294Z" fill="#047857"/>
+                                </svg>
+                                Unactive
+                            </span>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <ul class="list-none space-y-4">
+                                <li class="flex flex-row justify-between w-full">
+                                    <p class="font-inter font-semibold text-sm text-black-75">Price</p>
+                                    <p class="font-inter font-semibold text-sm text-blue">10 € <span class="before:content-['/'] before:text-black-75 capitalize"> month</span></p>
+                                </li>
+                                <li class="flex flex-row justify-between w-full">
+                                    <p class="font-inter font-semibold text-sm text-black-75">Billing period</p>
+                                    <p class="font-inter font-semibold text-sm text-blue capitalize">{{user.customer.interval}}</p>
+                                </li>
+                                <li class="flex flex-row justify-between w-full">
+                                    <p class="font-inter font-semibold text-sm text-black-75">Renewal date</p>
+                                    <p class="font-inter font-semibold text-sm text-blue">{{ user.customer.end_date | replace('-', ' ') }}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 p-4">
+                    <div class="flex flex-col gap-8 pb-8 border-b border-black-25">
+                        <div class="flex justify-between w-full">
+                            <h2 class="font-inter font-semibold text-lg text-black-100 capitalize">Uses limit</h2>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h3 class="flex justify-between w-full font-inter font-semibold text-sm text-blue">
+                                <span>{{restriction[0]}}</span>
+                                <span class="text-black-50 before:content-['/'] before:text-black-75">{{restriction[1]}}</span>
+                            </h3>
+                            <div class="flex flex-col items-start w-full">
+                                <div class="h-2 bg-black-5 w-full rounded-lg items-stretch"></div>
+                                <div class="absolute h-2 bg-blue rounded-lg max-w-[388px]" style="width: {{restriction[2]}}%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 p-4">
+                    <div class="flex flex-col gap-8">
+                        <div class="flex justify-between w-full">
+                            <h2 class="font-inter font-semibold text-lg text-black-100 capitalize">Manage your billing</h2>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            {% include 'pages/page_manage_subscription.html'%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col p-8 gap-4 bg-blue rounded-lg shadow-md">
+                <h2 class="font-inter font-semibold text-lg text-white capitalize">API details</h2>
+                <div class="flex flex-col gap-2">
+                    <h3 class="font-inter font-normal text-sm text-white/75">Your API key</h3>
+                    <div class="flex px-4 py-2 w-full bg-black-100 rounded-md gap-2 items-center justify-center">
+                        <p class="font-inter font-normal text-sm text-white select-all">{{user.instances.apiKey}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

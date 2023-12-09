@@ -1,0 +1,142 @@
+{% extends 'layouts/skeleton_auth.html' %}
+
+{% block title %}Create your account 🧨{% endblock %}
+
+{% block form %}
+<form action="/api/auth/register" method="post">
+        <div class="flex flex-col gap-4">
+        <div>
+            <label for="name" class="block text-sm font-medium mb-2 text-black-75">
+                {{content.name_label}}
+            </label>
+            {% with errors = get_flashed_messages(category_filter=['name_errors']) %}
+                {% if errors %}
+                <div class="relative">
+                    {{ form.name(class="py-3 px-4 pl-11 block w-full border-red-dark shadow-sm rounded-md text-sm focus:z-10 focus:border-blue focus:ring-blue") }}
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          
+                    </div>
+                </div>
+                    <label for="email" class="block text-center pt-2 text-red-dark">
+                        {%- for msg in errors %}
+                        {{msg}}
+                        {% endfor -%}
+                    </label>
+                {% else %}
+                <div class="relative">
+                    {{ form.name(class="py-3 px-4 pl-11 block w-full border-black-25 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue focus:ring-blue") }}
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          
+                    </div>
+                </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+        
+        <div>
+            <label for="surname" class="block text-sm font-medium mb-2 text-black-75">
+                {{content.surname_label}}
+            </label>
+            {% with errors = get_flashed_messages(category_filter=['surname_errors']) %}
+                {% if errors %}
+                <div class="relative">
+                    {{ form.surname(class="py-3 px-4 pl-11 block w-full border-red-dark shadow-sm rounded-md text-sm focus:z-10 focus:border-blue focus:ring-blue") }}
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          
+                    </div>
+                </div>
+                    <label for="email" class="block text-center pt-2 text-red-dark">
+                        {%- for msg in errors %}
+                        {{msg}}
+                        {% endfor -%}
+                    </label>
+                {% else %}
+                <div class="relative">
+                    {{ form.surname(class="py-3 px-4 pl-11 block w-full border-black-25 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue focus:ring-blue") }}
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          
+                    </div>
+                </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+    
+        <div>
+            <label for="email" class="block text-sm font-medium mb-2 text-black-75">
+                {{content.email_label}}
+            </label>
+            {% with errors = get_flashed_messages(category_filter=['email_errors']) %}
+                {% if errors %}
+                <div class="relative">
+                    {{ form.email(class="py-3 px-4 pl-11 block w-full border-red-dark shadow-sm rounded-md text-sm focus:z-10 focus:border-blue focus:ring-blue") }}
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                          </svg>
+                    </div>
+                </div>
+                    <label for="email" class="block text-center pt-2 text-red-dark">
+                        {%- for msg in errors %}
+                            {{msg}}
+                        {% endfor -%}
+                    </label>
+                {% else %}
+                <div class="relative">
+                    {{ form.email(class="py-3 px-4 pl-11 block w-full border-black-25 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue focus:ring-blue") }}
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                          </svg>
+                    </div>
+                </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div>
+            <div class="flex flex-col items-center gap-4 py-2">
+                <div class="flex items-center">
+                    {{ form.optinNL(class="shrink-0 mt-0.5 border-black-25 rounded text-black-75 pointer-events-none focus:ring-black-75") }}
+                    <label for="optinNL" class="text-base text-black-75 ml-3">{{content.optinNL_label}}</label>
+                </div>
+                <div class="flex items-center">
+                    {{ form.terms(class="shrink-0 mt-0.5 border-black-25 rounded text-black-75 pointer-events-none focus:ring-black-75") }}
+                    <label for="terms" class="text-base text-black-75 ml-3">{{content.terms_label}}</label>
+                </div>
+            </div>
+
+        <button class="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-black-100 text-white hover:bg-black-50 focus:outline-none focus:ring-2 focus:ring-black-50 focus:ring-offset-2 transition-all text-sm">
+            {{content.auth_register_CTA}}
+        </button>
+        </div>
+    </div>
+</form>
+
+{% with success = get_flashed_messages(category_filter=['success', 'errors']) %}
+    {% if success %}
+        {%- for msg in success %}
+        <p class="text lg:text-left text-center">
+            {{msg}}
+        </p>
+        {% endfor -%}
+    {% endif %}
+{% endwith %}
+
+<div class="w-full text-center pt-4">
+    <a href="{{ url_for('auth_login_renders.auth_login_page') }}" class="text-blue decoration-2 hover:underline font-medium">
+        {{content.auth_register_login}}
+    </a>
+</div>
+
+{% endblock %}

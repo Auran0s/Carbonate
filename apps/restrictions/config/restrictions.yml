@@ -1,0 +1,10 @@
+restrictionsPlan:
+  SOLO:
+  - [request, 100000]
+  BUSINESS:
+  - [request, 100000]
+  CUSTOM:
+  - [request, 100000]
+
+functions:
+  request: 1

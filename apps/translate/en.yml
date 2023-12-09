@@ -1,0 +1,65 @@
+auth_login_page_title: Welcome back
+auth_login_CTA: Login
+auth_login_register: Don't have an account?
+auth_login_email_exist: If your email address exists in our database, you will receive a link at your email address to login in a few minutes.
+auth_login_token_KO: Your token is KO
+
+email_label: Your Email
+email_placeholder: Email
+email_not_OK: That's not a valid email address.
+
+use_numbers_or_letters: Please, use numbers or letters
+
+name_label: Your name
+name_placeholder: Name
+
+surname_label: Your Surname
+surname_placeholder: Surname
+
+optinNL_label: Subscribe to your newsletter
+optinNL_placeholder: Subscribe to your newsletter
+
+terms_label : Accept terms and conditions
+terms_placeholder: Accept terms and conditions
+
+auth_register_page_title: Welcome on board
+auth_register_CTA: Register
+auth_register_login: I already have an account
+auth_register_already_account: You already have an account with this email
+auth_register_link_sended: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+
+JWT_expired: Your current session has been expired.
+
+auth_right_panel_title: Title
+auth_right_panel_text: Lorem Ipsum test
+
+user_profile_page_title: Account Setting
+user_profile_page_subtitle: Your profile,
+user_profile_page_billing_title: Your Billing,
+user_profile_save_CTA: Save My Preferences
+user_profile_email_warning: Warning, if you change your email adress, you'll be disconnected and you have to reconnect to your account with the new email
+user_profile_email_save_CTA: Save My Email
+user_profile_email_exist: There's already an account with this email adress
+
+user_menu_home: Home
+user_menu_setting: Setting
+user_menu_logout: Log Out
+
+stripe_manage_CTA: Manage Billing
+stripe_plan_page_title: Choose Your Plan
+stripe_plan_recommended: Recommended
+stripe_plan_CTA: Subscribe
+stripe_plan_expired: Your plan has been expired
+
+welcome_page_title: Welcome
+welcome_page_subtitle: We are preparing our app for you ...
+
+home_side_menu_home_title: Home
+home_welcome_title: Welcome,
+home_subtitle: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora aspernatur veritatis, sit aut eos, dolores esse hic adipisci quod unde delectus dolorum, voluptatem voluptatum. Assumenda voluptas eveniet rem harum quia!
+
+home_optinNL_title: Want to stay up to date on latest update of your favorite tool?
+home_optinNL_subtitle: Receive every week email notifications from Apollo.
+home_optinNL_CTA: Subscribe to the newsletter
+
+home_quick_links_title: Quick Links

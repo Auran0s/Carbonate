@@ -1,0 +1,43 @@
+<form action="/api/user/update/data" method="post">
+        <label for="name">
+            {{content.name_label}}
+        </label>
+        {% with errors = get_flashed_messages(category_filter=['name_errors']) %}
+            {% if errors %}
+                {{ form.name(class="") }}
+                <label for="email" class="">
+                    {%- for msg in errors %}
+                    {{msg}}
+                    {% endfor -%}
+                </label>
+            {% else %}
+                {{ form.name(class="") }}
+            {% endif %}
+        {% endwith %}
+        
+        <label for="surname">
+            {{content.surname_label}}
+        </label>
+        {% with errors = get_flashed_messages(category_filter=['name_errors']) %}
+            {% if errors %}
+                {{ form.surname(class="") }}
+                <label for="email">
+                    {%- for msg in errors %}
+                    {{msg}}
+                    {% endfor -%}
+                </label>
+            {% else %}
+                {{ form.surname(class="") }}
+            {% endif %}
+        {% endwith %}
+        {{content.optinNL_label}}
+        <label class="">
+            {% if user.optinNL == True %}
+                {{ form.optinNLTrue(class="toggle-input peer") }}
+            {% else %}
+                {{ form.optinNLFalse(class="toggle-input peer") }}
+            {% endif %}
+            <span class="toggle bg-accent/20 peer-checked:bg-primary after:bg-base-100"></span>
+        </label>
+        <button>{{content.user_profile_save_CTA}}</button>
+</form>

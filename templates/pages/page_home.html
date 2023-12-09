@@ -1,0 +1,69 @@
+{% extends 'layouts/skeleton_dashboard.html' %}
+
+{% block title %}
+<h1 class="font-inter font-semibold text-2xl text-white">Welcome back !</h1>
+<p class="font-inter font-normal text-sm text-white/75">Here you can manage all your integrations, your accounts and more</p>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-col gap-4 pl-8">
+  <div class="space-y-4">
+      <h2 class="font-inter font-semibold text-2xl text-black-100">Integrations</h2>
+      <div class="relative">
+          <input type="search" name="searchInput" id="searchInput" hx-trigger="keyup, search" hx-post="/api/services/search/" hx-target="#searchResults" class="py-3 px-4 pl-11 block w-1/3 border border-white shadow-sm font-inter rounded-md text-sm text-blue focus:z-10 focus:border-blue focus:ring-blue placeholder:text-black-50" placeholder="Search">
+          <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4 text-black-25">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Card Section -->
+<div class="px-8 py-2 mx-auto">
+  <!-- Grid -->
+  <div id="searchResults" hx-indicator="fetching-skeleton" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {% for credentials_service in credentials_services_list|sort(attribute='name') %}
+          <a class="group flex flex-col justify-center bg-white border border-black-5 shadow-sm rounded-xl hover:shadow-md transition max-h-min" href="integrations/s/{{credentials_service.machine_name}}">
+          <div class="p-4 md:p-5 space-y-4">
+              <div class="flex flex-row justify-between">
+              <div class="flex flex-row items-center gap-4">
+                  <div class="w-8">
+                  <img src="{{credentials_service.img}}" alt="">
+                  </div>
+                  <div>
+                  <h3 class="group-hover:text-blue font-semibold text-black-100">{{credentials_service.name}}</h3>
+                  </div>
+              </div>
+              <div>
+                  {% if credentials_service.machine_name in credentials_user_list|map(attribute='name') %} 
+                  <span class="inline-flex justify-center items-center gap-1.5 py-1.5 px-3 rounded-full font-inter text-xs font-semibold bg-green-light text-green-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <path d="M4.25001 7.73294C3.21592 7.73294 2.32956 7.3693 1.59092 6.64203C0.852287 5.91476 0.488651 5.02839 0.500014 3.98294C0.488651 2.96021 0.852287 2.08521 1.59092 1.35794C2.32956 0.630665 3.21592 0.267029 4.25001 0.267029C5.25001 0.267029 6.11933 0.630665 6.85797 1.35794C7.60797 2.08521 7.98865 2.96021 8.00001 3.98294C7.98865 4.67612 7.80683 5.3068 7.45456 5.87498C7.11365 6.44317 6.65911 6.89771 6.09092 7.23862C5.53411 7.56817 4.92047 7.73294 4.25001 7.73294Z" fill="currentColor"/>
+                    </svg>
+                    Connected
+                  </span>
+                  {% else %}
+                  <span class="inline-flex justify-center items-center gap-1.5 py-1.5 px-3 rounded-full font-inter text-xs font-semibold bg-black-25 text-black-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <path d="M4.25001 7.73294C3.21592 7.73294 2.32956 7.3693 1.59092 6.64203C0.852287 5.91476 0.488651 5.02839 0.500014 3.98294C0.488651 2.96021 0.852287 2.08521 1.59092 1.35794C2.32956 0.630665 3.21592 0.267029 4.25001 0.267029C5.25001 0.267029 6.11933 0.630665 6.85797 1.35794C7.60797 2.08521 7.98865 2.96021 8.00001 3.98294C7.98865 4.67612 7.80683 5.3068 7.45456 5.87498C7.11365 6.44317 6.65911 6.89771 6.09092 7.23862C5.53411 7.56817 4.92047 7.73294 4.25001 7.73294Z" fill="currentColor"/>
+                    </svg>
+                    Not Connected
+                  </span>
+                  {% endif %}
+              </div>
+              </div>
+              <div>
+              <p class="font-inter font-normal text-black-50 text-xs group-hover:text-black-100">
+                  {{credentials_service.desc}}
+              </p>
+              </div>
+          </div>
+          </a>
+      {% endfor %}
+  </div>
+  <!-- End Grid -->
+</div>
+<!-- End Card Section -->
+{% endblock %}

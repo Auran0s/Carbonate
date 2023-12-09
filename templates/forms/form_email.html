@@ -1,0 +1,19 @@
+<form action="/api/user/update/email" method="post">
+            {{content.user_profile_email_warning}}
+        <label for="email">
+            {{content.email_label}}
+        </label>
+        {% with errors = get_flashed_messages(category_filter=['errors']) %}
+            {% if errors %}
+                {{ Email_Form.email(class="") }}
+                <label for="email">
+                    {%- for msg in errors %}
+                        {{msg}}
+                    {% endfor -%}
+                </label>
+            {% else %}
+                {{ Email_form.email(class="") }}
+            {% endif %}
+        {% endwith %}
+            <button class="">{{content.user_profile_email_save_CTA}}</button>
+</form>
