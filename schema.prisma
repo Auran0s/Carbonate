@@ -16,12 +16,12 @@ model User {
 
   active Boolean @default(false)
 
-  email   String @unique
-  username  String @unique
+  email    String @unique
+  username String @unique
 
   avatar String
 
-  plan Plan?
+  plan        Plan?
   active_plan Boolean @default(false)
 
   optinNl Boolean   @default(false)
@@ -73,7 +73,7 @@ model Collections {
 
   users User[] @relation("UserCollections")
 
-  medias   Medias[]   @relation("CollectionsMedias")
+  Medias Medias[]
 }
 
 model Medias {
@@ -81,12 +81,13 @@ model Medias {
 
   name String
 
-  mediaType String
+  mediaType   String
   mediaFormat String
 
-  url String
+  url String?
 
   metadata String[]
 
-  collections Collections[] @relation("CollectionsMedias")
+  collections    Collections @relation(fields: [collections_id], references: [id])
+  collections_id String
 }

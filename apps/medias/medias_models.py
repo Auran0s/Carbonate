@@ -7,7 +7,7 @@ class MediaType:
     
 class MediaFormat:
     Portrait = 'Portrait'
-    Paysage = 'Landscape'
+    Landscape = 'Landscape'
     
 metadata_example = [
     {
@@ -18,12 +18,12 @@ metadata_example = [
     }
 ]
 
-async def medias_create(name, media_type, media_format, url, metadata, collections):
+async def medias_create(name, media_type, media_format, metadata, collections):
     async with Prisma() as db:
-        medias = await db.medias.create(data={'name':name, 'mediaType':media_type, 'mediaFormat':media_format, 'url':url, 'metadata':metadata, 'collections':{'connect':collections.id}})
+        medias = await db.medias.create(data={'name':name, 'mediaType':media_type, 'mediaFormat':media_format, 'metadata':metadata,'collections_id':collections.id})
     return medias
 
-async def media_delete(medias):
+async def medias_delete(medias):
     async with Prisma() as db:
         medias = await db.medias.delete(where={'id':medias.id})
     return medias

@@ -5,24 +5,14 @@ async def collections_create(name, users):
         collections = await db.collections.create(data={'name':name, 'users':{'connect':[{'id':user.id} for user in users]}})
     return collections
 
-async def collections_add_media(collections, medias):
-    async with Prisma() as db:
-        collections = await db.collections.update(where={'id':collections.id}, data={'medias':{'connect':[{'id':media.id} for media in medias]}})
-    return collections
-
-async def collections_delete_media(collections, medias):
-    async with Prisma() as db:
-            collections = await db.collections.update(where={'id':collections.id}, data={'medias':{'disconnect':[{'id':media.id} for media in medias]}})
-    return collections
-
 async def collections_get(collections):
     async with Prisma() as db:
-        collections = await db.collections.find_unique(where={'id':collections.id})
+        collections = await db.collections.find_unique(where={'id':collections})
     return collections
 
 async def collections_get_medias(collections):
     async with Prisma() as db:
-        collections = await db.collections.find_unique(where={'id':collections.id}, include={'medias': True})
+        collections = await db.collections.find_unique(where={'id':collections.id}, include={'Medias':True})
     return collections
 
 async def collections_get_users(collections):

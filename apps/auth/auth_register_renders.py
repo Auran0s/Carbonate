@@ -7,7 +7,6 @@ from apps.home.home_renders import *
 
 from apps.user.user_models import *
 from apps.stripe.stripe_api import *
-from apps.instance.instance_models import *
 
 from apps.translate.translate_engine import contents
 
@@ -30,7 +29,6 @@ async def auth_register():
             return redirect(url_for('auth_register_renders.auth_register_page'))
         user = await user_create(form.email.data, form.name.data, form.surname.data)
         await stripe_create_customer(user)
-        await instance_create(user)
         if form.optinNL.data == True:
             await user_optinNL(user, form.optinNL.data)
         flash(contents["auth_register_link_sended"], 'success') #Add email function

@@ -36,6 +36,8 @@ app.register_blueprint(user_api)
 from apps.restrictions.restrictions_renders import *
 app.register_blueprint(restrictions_renders)
 
+from apps.medias.medias_api import *
+app.register_blueprint(medias_api)
 
 # SECRET KEYS #
 app.secret_key = config('SECRET_KEY')
